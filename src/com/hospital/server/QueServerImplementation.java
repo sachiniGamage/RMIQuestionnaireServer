@@ -103,8 +103,6 @@ public class QueServerImplementation extends UnicastRemoteObject implements RMII
 	}
 	
 	
-
-	
 //question 2	
 
 	
@@ -137,12 +135,7 @@ public class QueServerImplementation extends UnicastRemoteObject implements RMII
 				+"\n" + "Unsatisfied: " + q2ans4 + "\n" + "Very unsatisfied : " + q2ans5;
 	}
 	
-	
-	
-	
-	
 //	question 3
-
 	
 	public String que3(String q3) throws RemoteException{
 		
@@ -173,14 +166,9 @@ public class QueServerImplementation extends UnicastRemoteObject implements RMII
 				+"\n" + "Unsatisfied: " + q3ans4 + "\n" + "Very unsatisfied : " + q3ans5;
 	}
 	
-	
-	
-	
 //	question 4
-
 	
 	public String que4(String q4) throws RemoteException{
-		
 		
 		String question4= q4;
 		
@@ -189,7 +177,6 @@ public class QueServerImplementation extends UnicastRemoteObject implements RMII
 		int q4ans3=0;
 		int q4ans4=0;
 		int q4ans5=0;
-		
 		
 			if (question4.equals("Very satisfied")) {
 				q4ans1=1;
@@ -208,8 +195,6 @@ public class QueServerImplementation extends UnicastRemoteObject implements RMII
 		return "Very satisfied : "+ q4ans1 +"\n" +"Satisfied : " + q4ans2 + "\n" + "Neutral : " + q4ans3
 				+"\n" + "Unsatisfied: " + q4ans4 + "\n" + "Very unsatisfied : " + q4ans5;
 	}
-	
-	
 	
 	
 //	question 5
@@ -236,22 +221,16 @@ public class QueServerImplementation extends UnicastRemoteObject implements RMII
 				q5ans5=1;
 			} 
 			
-			addcount(5,q5ans1, q5ans2, q5ans3, q5ans4,  q5ans5);
-			
-			
-			
+			addcount(5,q5ans1, q5ans2, q5ans3, q5ans4,  q5ans5);	
 		
 		return "Very satisfied : "+ q5ans1 +"\n" +"Satisfied : " + q5ans2 + "\n" + "Neutral : " + q5ans3
 				+"\n" + "Unsatisfied: " + q5ans4 + "\n" + "Very unsatisfied : " + q5ans5;
 	}
 	
-	
-	
 //	question 6
 
 	
 	public String que6(String q6) throws RemoteException{
-		
 		
 		String question6= q6;
 		
@@ -280,21 +259,14 @@ public class QueServerImplementation extends UnicastRemoteObject implements RMII
 				+"\n" + "Unsatisfied: " + q6ans4 + "\n" + "Very unsatisfied : " + q6ans5;
 	}
 	
-	
-	
-	
 //	question 7
 
-	
 	public String que7(String q7) throws RemoteException{
-		
 		
 		String question7= q7;
 		
 		int q7ans1=0;
 		int q7ans2=0;
-		
-		
 		
 			if (question7.equals("Yes")) {
 				q7ans1=1;
@@ -303,19 +275,12 @@ public class QueServerImplementation extends UnicastRemoteObject implements RMII
 			}
 			
 			addcount(7,q7ans1, 0, 0, 0,  q7ans2);
-
-			
 		
 		return "Yes : "+ q7ans1 +"\n" +"No : " + q7ans2 ;
 	
 	}
 	
-
-	
-	
 //	question 8
-
-	
 	
 	public String que8(String q8) throws RemoteException{
 
@@ -335,9 +300,6 @@ public class QueServerImplementation extends UnicastRemoteObject implements RMII
 		return "Yes : "+ q8ans1 +"\n" +"No : " + q8ans2 ;
 
 	}
-	
-	
-	
 	
 //store count in database
 	public String addcount(int no, int que1, int que2,int que3,int que4,int que5) throws RemoteException{
@@ -364,10 +326,6 @@ public class QueServerImplementation extends UnicastRemoteObject implements RMII
 		}
 		 return "error";
 	}
-	
-	
-	
-	
 	
 	//Edit question label
 	
@@ -412,7 +370,6 @@ public class QueServerImplementation extends UnicastRemoteObject implements RMII
 		return ans;
 	}
 	
-	
 	//update question
 	public void UpdateQue( int queID, String que) throws RemoteException {
 		try {
@@ -425,7 +382,6 @@ public class QueServerImplementation extends UnicastRemoteObject implements RMII
 			throw new RemoteException("Update failed.", e);
 		}
 	}
-	
 	
 	//Email
 	public String Email(int questionID) throws RemoteException{
@@ -478,12 +434,7 @@ public class QueServerImplementation extends UnicastRemoteObject implements RMII
             multipart.addBodyPart(messageBodyPart);
 
             message.setText(graph(questionID));
-           
-//            message.setContent(multipart);
-            
-          
-//            message.addBodyPart(imagePart);
-//            message.setText(msg);
+
             System.out.println("a8");
             Transport.send(message);
          
@@ -494,10 +445,7 @@ public class QueServerImplementation extends UnicastRemoteObject implements RMII
 		}
 		return "email send successfully.." ;
 	
-	
 }
-
-	
 	
 	public int pst(String query) {
 		try {
@@ -513,18 +461,15 @@ public class QueServerImplementation extends UnicastRemoteObject implements RMII
 		return 0;
 	}
 	
-	
 	//show bar chart (dashboard)
 	public int[] BarChart(int no) throws Exception{
 
-		
 		String question1Count = "SELECT COUNT(`Ans1Count`) AS ans FROM `analytic` WHERE `queID`= '"+no+"' AND `Ans1Count` != 0" ;
 		String question2Count = "SELECT COUNT(`Ans2Count`) AS ans FROM `analytic` WHERE `queID`='"+no+"' AND `Ans2Count` != 0" ;
 		String question3Count = "SELECT COUNT(`Ans3Count`) AS ans FROM `analytic` WHERE `queID`='"+no+"' AND `Ans3Count` != 0" ;
 		String question4Count = "SELECT COUNT(`Ans4Count`) AS ans FROM `analytic` WHERE `queID`='"+no+"' AND `Ans4Count` != 0" ;
 		String question5Count = "SELECT COUNT(`Ans5Count`) AS ans FROM `analytic` WHERE `queID`='"+no+"' AND `Ans5Count` != 0" ;
 		
-
 		int[] array = new int[5];
 		array[0] = pst(question1Count);
 		array[1] = pst(question2Count);
@@ -535,19 +480,12 @@ public class QueServerImplementation extends UnicastRemoteObject implements RMII
 		return array;
 	}
 	
-	
-	
-	
-	
-	
-	
 	//Quick chart -API(Email)
 	public String graph(int no) {
 		
 		int[] values;
 		try {
 			values = BarChart(no);
-		
 		
 		String dataString = "" + values[0] +  ", " +values[1]+ "," + values[2] +  ", " +values[3] + ", "+values[4];
 		QuickChart chart = new QuickChart();

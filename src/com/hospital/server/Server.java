@@ -20,7 +20,6 @@ public class Server {
 		 * Entry point of the server. 
 		 * 
 		 */
-		
 
 		try {
 
@@ -32,15 +31,7 @@ public class Server {
 		}catch(Exception e) {
 			System.out.println("s1");
 			e.printStackTrace();
-		}
-			
-			
-			
-//		RMIInterface questions = new QueServerImplementation();
-//		reg = LocateRegistry.createRegistry(5099);//port
-//		reg.rebind("hello", reg);
-//		System.out.println("Started RMI Server");
-			
+		}			
 	
 		}
 }

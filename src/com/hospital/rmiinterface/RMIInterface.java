@@ -6,9 +6,7 @@ import java.sql.SQLException;
 
 //remote interface
 public interface RMIInterface extends Remote{
-//	public String echo(String i) throws RemoteException;
-	
-//	public String viewAns() throws RemoteException;
+
 //question 1
 	public String que1(String q1) throws RemoteException;
 	//question 2
