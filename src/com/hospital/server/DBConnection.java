@@ -10,22 +10,19 @@ public class DBConnection {
 	Connection con = null;
 	ResultSet rs;
 	Statement st;	
-		public static Connection dBConnector()
-		{
-		
-		try {
-			Class.forName("com.mysql.cj.jdbc.Driver");
+		public static Connection dBConnector(){
+			try {
+				Class.forName("com.mysql.cj.jdbc.Driver");
 
-			Connection con = DriverManager.getConnection("jdbc:mysql://localhost/questionnaire", "root", "");
-			System.out.print("Connected database ");
-			
-			return con;
+				Connection con = DriverManager.getConnection("jdbc:mysql://localhost/questionnaire", "root", "");
+				System.out.print("Connected database ");
+				
+				return con;
 
-		} catch (ClassNotFoundException | SQLException e) {
-			e.printStackTrace();
-			
-			return null;
+			} catch (ClassNotFoundException | SQLException e) {
+				e.printStackTrace();
+				
+				return null;
+			}
 		}
-
-	}
 }

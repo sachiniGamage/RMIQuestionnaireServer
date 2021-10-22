@@ -45,8 +45,6 @@ import org.jfree.data.category.DefaultCategoryDataset;
 
 import com.hospital.rmiinterface.RMIInterface;
 
-
-
 public class QueServerImplementation extends UnicastRemoteObject implements RMIInterface{
 	
 	Connection connection =null;
@@ -67,7 +65,6 @@ public class QueServerImplementation extends UnicastRemoteObject implements RMII
 		}
 	
 	}
-	
 
 	@Override
 	public String que1(String q1) throws RemoteException{
@@ -79,7 +76,6 @@ public class QueServerImplementation extends UnicastRemoteObject implements RMII
 		int q1ans3=0;
 		int q1ans4=0;
 		int q1ans5=0;
-
 		
 			if (question1.equals("Very satisfied")) {
 				q1ans1=1;
@@ -94,17 +90,14 @@ public class QueServerImplementation extends UnicastRemoteObject implements RMII
 				q1ans5=1;
 			} 
 			
-			
 			addcount(1,q1ans1, q1ans2, q1ans3, q1ans4,  q1ans5);
 
 			return  "Very satisfied : "+ q1ans1 +"\n" +"Satisfied : " + q1ans2 + "\n" + "Neutral : " + q1ans3
 					+"\n" + "Unsatisfied: " + q1ans4 + "\n" + "Very unsatisfied : " + q1ans5;
-
 	}
 	
 	
 //question 2	
-
 	
 	public String que2(String q2) throws RemoteException{
 		
@@ -114,7 +107,6 @@ public class QueServerImplementation extends UnicastRemoteObject implements RMII
 		int q2ans3=0;
 		int q2ans4=0;
 		int q2ans5=0;
-		
 		
 			if (question2.equals("Very satisfied")) {
 				q2ans1=1;
@@ -128,7 +120,6 @@ public class QueServerImplementation extends UnicastRemoteObject implements RMII
 				q2ans5=1;
 			} 
 		
-			
 			addcount(2,q2ans1, q2ans2, q2ans3, q2ans4,  q2ans5);
 			
 		return "Very satisfied : "+ q2ans1 +"\n" +"Satisfied : " + q2ans2 + "\n" + "Neutral : " + q2ans3
@@ -146,7 +137,6 @@ public class QueServerImplementation extends UnicastRemoteObject implements RMII
 		int q3ans4=0;
 		int q3ans5=0;
 		
-		
 			if (question3.equals("Very satisfied")) {
 				q3ans1=1;
 			} else if (question3.equals("Satisfied")) {
@@ -160,7 +150,6 @@ public class QueServerImplementation extends UnicastRemoteObject implements RMII
 			} 
 		
 			addcount(3,q3ans1, q3ans2, q3ans3, q3ans4,  q3ans5);
-			
 			
 		return "Very satisfied : "+ q3ans1 +"\n" +"Satisfied : " + q3ans2 + "\n" + "Neutral : " + q3ans3
 				+"\n" + "Unsatisfied: " + q3ans4 + "\n" + "Very unsatisfied : " + q3ans5;
@@ -228,7 +217,6 @@ public class QueServerImplementation extends UnicastRemoteObject implements RMII
 	}
 	
 //	question 6
-
 	
 	public String que6(String q6) throws RemoteException{
 		
@@ -253,7 +241,6 @@ public class QueServerImplementation extends UnicastRemoteObject implements RMII
 			} 
 			
 			addcount(6,q6ans1, q6ans2, q6ans3, q6ans4,  q6ans5);
-
 		
 		return "Very satisfied : "+ q6ans1 +"\n" +"Satisfied : " + q6ans2 + "\n" + "Neutral : " + q6ans3
 				+"\n" + "Unsatisfied: " + q6ans4 + "\n" + "Very unsatisfied : " + q6ans5;
@@ -294,7 +281,6 @@ public class QueServerImplementation extends UnicastRemoteObject implements RMII
 			} else if (question8.equals("No")) {
 				q8ans2=1;			
 			}
-			
 			addcount(8,q8ans1, 0, 0, 0,  q8ans2);
 			
 		return "Yes : "+ q8ans1 +"\n" +"No : " + q8ans2 ;
@@ -311,12 +297,12 @@ public class QueServerImplementation extends UnicastRemoteObject implements RMII
 		
 		try {
 			PreparedStatement pst = connection.prepareStatement(sql);
-			 pst.setInt(1, no);
-			 pst.setInt(2,  que1);
-			 pst.setInt(3,  que2);
-			 pst.setInt(4,  que3);
-			 pst.setInt(5,  que4);
-			 pst.setInt(6,  que5);
+			pst.setInt(1, no);
+			pst.setInt(2,  que1);
+			pst.setInt(3,  que2);
+			pst.setInt(4,  que3);
+			pst.setInt(5,  que4);
+			pst.setInt(6,  que5);
 			
 			pst.execute();
 			 		
@@ -337,8 +323,7 @@ public class QueServerImplementation extends UnicastRemoteObject implements RMII
 			PreparedStatement pst = connection.prepareStatement(sql);
 			 rs = pst.executeQuery();
 			 
-			 if(rs.next()) {
-					
+			 if(rs.next()) {	
 					return rs.getString("que");
 				}
 		}catch (Exception e) {
@@ -408,8 +393,6 @@ public class QueServerImplementation extends UnicastRemoteObject implements RMII
 
 		try{
 			Message message = new MimeMessage(session);
-
-
             message.setFrom(new InternetAddress(from));
             message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(To));    
             message.setSubject(subject);
@@ -430,9 +413,7 @@ public class QueServerImplementation extends UnicastRemoteObject implements RMII
             messageBodyPart.setHeader("Content-ID", "<image>");
         
          // add image to the multipart
-           
             multipart.addBodyPart(messageBodyPart);
-
             message.setText(graph(questionID));
 
             System.out.println("a8");

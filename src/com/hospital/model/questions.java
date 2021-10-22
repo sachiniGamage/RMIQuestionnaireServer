@@ -61,6 +61,4 @@ public class questions {
 	public void setAns5(String ans5) {
 		this.ans5 = ans5;
 	}
-	
-	
 }
